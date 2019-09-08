@@ -25,7 +25,11 @@ def is_word_guessed(secret_word, letters_guessed):
         bool: True only if all the letters of secret_word are in letters_guessed, False otherwise
     '''
     # TODO: Loop through the letters in the secret_word and check if a letter is not in lettersGuessed
-    pass
+
+    
+
+
+
 
 def get_guessed_word(secret_word, letters_guessed):
     '''
@@ -70,7 +74,7 @@ def spaceman(secret_word):
     print("Hello! Welcome to Spaceman. This is a word guessing game.")
     print("There is a mystery word and the objective is to guess the word before you run out of guesses.")
     print("You have 7 guesses. You are allowed to guess only one letter at a time.")
-    
+
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
 
     #TODO: Check if the guessed letter is in the secret or not and give the player feedback
