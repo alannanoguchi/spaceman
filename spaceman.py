@@ -93,7 +93,7 @@ def is_guess_in_word(guess, secret_word):
 # A function to restart the game once the game is over
 def restart_game():
     while True:
-        answer = input("Play again? yes or no: ")
+        answer = input("Play again? yes or no: ").lower()
         if answer == "y" or answer == "yes":
             letters_guessed.clear()
             secret_word = load_word()
@@ -129,7 +129,7 @@ def spaceman(secret_word):
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
     count = 0
     while True:
-        guessed_letter = input('\n' "Choosen letter is: " )
+        guessed_letter = input('\n' "Choosen letter is: " ).lower()
 
         # print(guessed_letter)
         if len(guessed_letter) > 1:
