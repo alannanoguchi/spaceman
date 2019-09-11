@@ -2,8 +2,8 @@ import random
 
 # a list that contains the letters that qere correctly guessed
 correct_letter_guessed = []
-letters_guessed = []
 
+letters_guessed = []
 
 def load_word():
     '''
@@ -31,16 +31,14 @@ def is_word_guessed(secret_word, letters_guessed):
     '''
     # TODO: Loop through the letters in the secret_word and check if a letter is not in lettersGuessed
 
-    # the count is set to 0
-    # if the correct letter is guessed, the count will increase
-    count = 0
-    for letter in secret_word:
-        if letter in letters_guessed:
-            count += 1
-        if count == len(secret_word):
-            return True
-        else:
-            return False
+    correct_word = set(letters_guessed).intersection(secret_word)
+
+    # for letter in secret_word:
+    if len(correct_word) == len(secret_word):
+        return True
+    else:
+        return False
+
 
 
 
@@ -95,6 +93,8 @@ def is_guess_in_word(guess, secret_word):
 
 
 
+
+
 def spaceman(secret_word):
     '''
     A function that controls the game of spaceman. Will start spaceman in the command line.
@@ -104,16 +104,18 @@ def spaceman(secret_word):
 
     #TODO: show the player information about the game according to the project spec
     welcome_user = input("Hello! What is your name? ")
-    print(welcome_user + ", welcome to Spaceman. This is a word guessing game.")
+
+    print('\n' + welcome_user + ", welcome to Spaceman. This is a word guessing game.")
     print("There is a mystery word and the objective is to guess the word before you run out of guesses.")
     print("You have 7 guesses. You are allowed to guess only one letter at a time.")
     # ready_to_play = input("Are you ready to play?")
     print("------------------------------------------------------------------------")
-    
 
+    print(secret_word)
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
+    count = 0
     while True:
-        guessed_letter = input("Choosen letter is: ")
+        guessed_letter = input('\n' "Choosen letter is: " )
 
         # print(guessed_letter)
         if len(guessed_letter) > 1:
@@ -122,15 +124,27 @@ def spaceman(secret_word):
             print("Guessed letters: " + guessed_letter)
 
             #TODO: Check if the guessed letter is in the secret or not and give the player feedback
-        is_guess_in_word(guessed_letter, secret_word)
-        print(letters_guessed)
+            is_guess_in_word(guessed_letter, secret_word)
+    
 
-        #TODO: show the guessed word so far
-        get_guessed_word(secret_word, letters_guessed)
+            #TODO: show the guessed word so far
+            get_guessed_word(secret_word, letters_guessed)
 
-        #TODO: check if the game has been won or lost
-        is_word_guessed(secret_word, letters_guessed)
+            #TODO: check if the game has been won or lost
 
+            isguessed = is_word_guessed(secret_word, letters_guessed)
+
+            incorrect = set(letters_guessed).difference(secret_word)
+
+            if isguessed == True:
+                print("Congrats! You just won the game!")
+                return False
+            elif len(incorrect) > 6:
+                print('\n' + "GAME OVER!" + '\n')
+                return False
+            else:
+                # count = count + 1
+                print("Number of incorrect guesses: " + str(len(incorrect)))
 
 
 
