@@ -2,8 +2,8 @@ import random
 
 # a list that contains the letters that qere correctly guessed
 correct_letter_guessed = []
-
 letters_guessed = []
+
 
 def load_word():
     '''
@@ -19,6 +19,8 @@ def load_word():
     words_list = words_list[0].split(' ')
     secret_word = random.choice(words_list)
     return secret_word
+
+
 
 def is_word_guessed(secret_word, letters_guessed):
     '''
@@ -90,6 +92,7 @@ def is_guess_in_word(guess, secret_word):
         return False
 
 
+
 # A function to restart the game once the game is over
 def restart_game():
     while True:
@@ -109,7 +112,6 @@ def restart_game():
 
 
 
-
 def spaceman(secret_word):
     '''
     A function that controls the game of spaceman. Will start spaceman in the command line.
@@ -119,17 +121,18 @@ def spaceman(secret_word):
 
     #TODO: show the player information about the game according to the project spec
     welcome_user = input("Hello! What is your name? ")
-
     print('\n' + welcome_user + ", welcome to Spaceman. This is a word guessing game.")
-    print("There is a mystery word and the objective is to guess the word before you run out of guesses.")
-    print("You have 7 guesses. You are allowed to guess only one letter at a time.")
+
+    continue_game = input("Press any button to continue: ")
+    print('\n' + "There is a mystery word and the objective is to guess the word before you run out of guesses.")
+    print(continue_game + "You have 7 guesses. You are allowed to guess only one letter at a time." + '\n' + "Let's begin." + '\n')
     print("------------------------------------------------------------------------")
 
 
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
     count = 0
     while True:
-        guessed_letter = input('\n' "Choosen letter is: " ).lower()
+        guessed_letter = input('\n' "Choosen letter is: " ).lower() #.lower() makes inputs not case sensitive
 
         # print(guessed_letter)
         if len(guessed_letter) > 1:
@@ -154,7 +157,7 @@ def spaceman(secret_word):
                 print("Congrats! You just won the game!")
                 restart_game()
             elif len(incorrect) == 6:
-                print('\n' + "One more guess left!" + '\n')
+                print('\n' + "UH OH! Only one more incorrect guess left!" + '\n')
                 print("Number of incorrect guesses: " + str(len(incorrect)))
                 print("----------------------------")
             elif len(incorrect) > 6:
