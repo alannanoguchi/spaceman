@@ -78,14 +78,6 @@ def is_guess_in_word(guess, secret_word):
         bool: True if the guess is in the secret_word, False otherwise
     '''
     #TODO: check if the letter guess is in the secret word
-
-    # if guess in secret_word:
-    #     # if the guess is correct, add it to correct_letter_guessed and print statement
-    #     letters_guessed.append(guess)
-    #     print("Yes! You correctly guessed a letter." + '\n')
-    #     return True
-    # elif guess in letters_guessed:
-    #     print('\n' + "Try again. You already used that letter." + '\n')
     if guess in letters_guessed:
         print('\n' + "Try again. You already used that letter." + '\n')
     elif guess in secret_word:
@@ -173,8 +165,6 @@ def spaceman(secret_word):
                 # count = count + 1
                 print("Number of incorrect guesses: " + str(len(incorrect)))
                 print("----------------------------")
-
-
 
 
 
