@@ -79,15 +79,22 @@ def is_guess_in_word(guess, secret_word):
     '''
     #TODO: check if the letter guess is in the secret word
 
-    if guess in secret_word:
-        # if the guess is correct, add it to correct_letter_guessed and print statement
+    # if guess in secret_word:
+    #     # if the guess is correct, add it to correct_letter_guessed and print statement
+    #     letters_guessed.append(guess)
+    #     print("Yes! You correctly guessed a letter." + '\n')
+    #     return True
+    # elif guess in letters_guessed:
+    #     print('\n' + "Try again. You already used that letter." + '\n')
+    if guess in letters_guessed:
+        print('\n' + "Try again. You already used that letter." + '\n')
+    elif guess in secret_word:
         letters_guessed.append(guess)
-        print("Yes! You correctly guessed a letter.")
-        return True
+        print("Yes! You correctly guessed a letter." + '\n')
     else:
         # if guess is incorrect, add the letter to letters_guessed and print statement
         letters_guessed.append(guess)
-        print("Sorry, but that is not a correct guess.")
+        print("Sorry, but that is not a correct guess." + '\n')
         return False
 
 
@@ -108,10 +115,9 @@ def spaceman(secret_word):
     print('\n' + welcome_user + ", welcome to Spaceman. This is a word guessing game.")
     print("There is a mystery word and the objective is to guess the word before you run out of guesses.")
     print("You have 7 guesses. You are allowed to guess only one letter at a time.")
-    # ready_to_play = input("Are you ready to play?")
     print("------------------------------------------------------------------------")
 
-    print(secret_word)
+
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
     count = 0
     while True:
@@ -121,11 +127,11 @@ def spaceman(secret_word):
         if len(guessed_letter) > 1:
             print("Sorry, you violated the rules. Choose only ONE letter.") # make words in color red?
         else:
-            print("Guessed letters: " + guessed_letter)
+            print("Guessed letters: " + guessed_letter + '\n')
 
             #TODO: Check if the guessed letter is in the secret or not and give the player feedback
             is_guess_in_word(guessed_letter, secret_word)
-    
+            print(letters_guessed)
 
             #TODO: show the guessed word so far
             get_guessed_word(secret_word, letters_guessed)
@@ -138,13 +144,17 @@ def spaceman(secret_word):
 
             if isguessed == True:
                 print("Congrats! You just won the game!")
-                return False
+            elif len(incorrect) == 6:
+                print('\n' + "One more guess left!" + '\n')
+                print("Number of incorrect guesses: " + str(len(incorrect)))
+                print("----------------------------")
             elif len(incorrect) > 6:
                 print('\n' + "GAME OVER!" + '\n')
                 return False
             else:
                 # count = count + 1
                 print("Number of incorrect guesses: " + str(len(incorrect)))
+                print("----------------------------")
 
 
 
