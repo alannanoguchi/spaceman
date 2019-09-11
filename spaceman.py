@@ -98,6 +98,22 @@ def is_guess_in_word(guess, secret_word):
         return False
 
 
+# A function to restart the game once the game is over
+def restart_game():
+    while True:
+        answer = input("Play again? yes or no: ")
+        if answer == "y" or answer == "yes":
+            letters_guessed.clear()
+            secret_word = load_word()
+            print("-------------------------" + '\n')
+            spaceman(secret_word)
+        elif answer == "n" or answer == "no":
+            print("Thanks for playing. Goodbye.")
+            quit()
+        else:
+            print("Invalid answer. Enter yes or no. ")
+
+
 
 
 
@@ -144,12 +160,14 @@ def spaceman(secret_word):
 
             if isguessed == True:
                 print("Congrats! You just won the game!")
+                restart_game()
             elif len(incorrect) == 6:
                 print('\n' + "One more guess left!" + '\n')
                 print("Number of incorrect guesses: " + str(len(incorrect)))
                 print("----------------------------")
             elif len(incorrect) > 6:
-                print('\n' + "GAME OVER!" + '\n')
+                print('\n' + "GAME OVER! The mystery word was: " + secret_word + '\n')
+                restart_game()
                 return False
             else:
                 # count = count + 1
