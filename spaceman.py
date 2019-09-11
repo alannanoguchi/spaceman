@@ -59,8 +59,7 @@ def get_guessed_word(secret_word, letters_guessed):
     guessing_word = []
 
     for letter in secret_word:
-        if letter in letters_guessed: #and letter in secret_word:
-        # if letter in letters_guessed.intersection(secret_word):
+        if letter in letters_guessed:
             guessing_word.append(letter)
         else:
             guessing_word.append("_")
@@ -123,7 +122,7 @@ def spaceman(secret_word):
     welcome_user = input("Hello! What is your name? ")
     print('\n' + welcome_user + ", welcome to Spaceman. This is a word guessing game.")
 
-    continue_game = input("Press any button to continue: ")
+    continue_game = input("Press Enter or Return to continue: ")
     print('\n' + "There is a mystery word and the objective is to guess the word before you run out of guesses.")
     print(continue_game + "You have 7 guesses. You are allowed to guess only one letter at a time." + '\n' + "Let's begin." + '\n')
     print("------------------------------------------------------------------------")
@@ -136,13 +135,16 @@ def spaceman(secret_word):
 
         # print(guessed_letter)
         if len(guessed_letter) > 1:
-            print("Sorry, you violated the rules. Choose only ONE letter.") # make words in color red?
+            print("Sorry, you violated the rules. Choose only ONE letter.")
+        elif guessed_letter.isalpha() == False:
+            print("Invalid input. Please use a letter.")
         else:
             print("Guessed letters: " + guessed_letter + '\n')
 
             #TODO: Check if the guessed letter is in the secret or not and give the player feedback
             is_guess_in_word(guessed_letter, secret_word)
             print(letters_guessed)
+
 
             #TODO: show the guessed word so far
             get_guessed_word(secret_word, letters_guessed)
@@ -165,7 +167,6 @@ def spaceman(secret_word):
                 restart_game()
                 return False
             else:
-                # count = count + 1
                 print("Number of incorrect guesses: " + str(len(incorrect)))
                 print("----------------------------")
 
