@@ -131,7 +131,7 @@ def spaceman(secret_word):
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
     count = 0
     while True:
-        guessed_letter = input('\n' "Choosen letter is: " ).lower() #.lower() makes inputs not case sensitive
+        guessed_letter = input('\n' "Chosen letter is: " ).lower() #.lower() makes inputs not case sensitive
 
         # print(guessed_letter)
         if len(guessed_letter) > 1:
